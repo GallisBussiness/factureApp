@@ -11,13 +11,16 @@ export class Vente {
     @Prop({ type: String, required: true })
     date: string;
 
+    @Prop({ type: Number, required: true })
+    qte: number;
+
     @Prop({type: Types.ObjectId, required: true, ref: Client.name})
     @Type(() => Client)
     client: Client;
 
-    @Prop({type: [{type: Types.ObjectId, ref: Produit.name}], required: true})
+    @Prop({type: Types.ObjectId, ref: Produit.name, required: true})
     @Type(() => Produit)
-    produits: Produit;
+    produit: Produit;
 }
 
 

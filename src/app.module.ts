@@ -13,6 +13,7 @@ import { AuthMiddleware } from './auth/auth.middleware';
 import { ClientModule } from './client/client.module';
 import { ProduitsModule } from './produits/produits.module';
 import { VentesModule } from './ventes/ventes.module';
+import { FactureModule } from './facture/facture.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { VentesModule } from './ventes/ventes.module';
     ClientModule,
     ProduitsModule,
     VentesModule,
+    FactureModule,
   ],
   controllers: [],
   providers: [],

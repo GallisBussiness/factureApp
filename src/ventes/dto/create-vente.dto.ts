@@ -1,4 +1,4 @@
-import { IsArray, IsMongoId, IsString } from "class-validator";
+import { IsMongoId, IsNumber, IsString } from "class-validator";
 
 export class CreateVenteDto {
  @IsString()
@@ -7,6 +7,9 @@ export class CreateVenteDto {
  @IsMongoId()
  client: string;
 
- @IsArray()
- produits: string[];
+ @IsMongoId()
+ produit: string;
+
+ @IsNumber()
+ qte: number;
 }
