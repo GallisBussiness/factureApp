@@ -19,16 +19,16 @@ export class FactureController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.factureService.findOne(+id);
+    return this.factureService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFactureDto: UpdateFactureDto) {
-    return this.factureService.update(+id, updateFactureDto);
+    return this.factureService.update(id, updateFactureDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.factureService.remove(+id);
+    return this.factureService.remove(id);
   }
 }
