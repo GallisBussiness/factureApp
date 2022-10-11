@@ -23,7 +23,7 @@ export class VentesService {
 
   async findAll(): Promise<Vente[]> {
     try {
-      return await this.venteModel.find().populate(['client','produits']);
+      return await this.venteModel.find();
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
@@ -31,7 +31,7 @@ export class VentesService {
 
   async findOne(id: string): Promise<Vente> {
     try {
-      return await this.venteModel.findById(id).populate(['client','produits']);
+      return await this.venteModel.findById(id);
     } catch (error) {
       throw new HttpException(error.message, 500);
     }

@@ -10,7 +10,7 @@ export class Vente {
     @Prop({ type: Number, required: true })
     qte: number;
 
-    @Prop({type: Types.ObjectId, ref: Produit.name, required: true})
+    @Prop({type: Types.ObjectId, ref: Produit.name, required: true, autopopulate: true})
     @Type(() => Produit)
     produit: Produit;
 }

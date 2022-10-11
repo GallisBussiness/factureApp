@@ -6,8 +6,12 @@ import { Vente, VenteSchema } from './entities/vente.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-    { name: Vente.name, schema: VenteSchema },
+    MongooseModule.forFeatureAsync([
+    { name: Vente.name, useFactory: () => {
+      const schema = VenteSchema;
+      schema.plugin(require('mongoose-autopopulate'));
+      return schema;
+    } },
   ]),],
   controllers: [VentesController],
   providers: [VentesService]

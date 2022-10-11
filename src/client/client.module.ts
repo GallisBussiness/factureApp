@@ -6,8 +6,12 @@ import { Client, ClientSchema } from './entities/client.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-    { name: Client.name, schema: ClientSchema },
+    MongooseModule.forFeatureAsync([
+    { name: Client.name, useFactory: () => {
+      const schema = ClientSchema;
+      schema.plugin(require('mongoose-autopopulate'));
+      return schema;
+    }},
   ]),],
   controllers: [ClientController],
   providers: [ClientService]

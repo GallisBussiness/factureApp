@@ -26,6 +26,7 @@ import { FactureModule } from './facture/facture.module';
         autoCreate: true,
       }),
       inject: [ConfigService],
+      
     }),
     JwtModule.registerAsync({
       useFactory: async (config: ConfigService) => {

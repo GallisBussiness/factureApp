@@ -13,9 +13,9 @@ export class Facture {
     date:string;
 
     @Prop({type: Number, required: true})
-    total:string;
+    total:number;
 
-    @Prop({type: Types.ObjectId, ref: Client.name, required: true})
+    @Prop({type: Types.ObjectId, ref: Client.name, required: true, autopopulate: true})
     @Type(() => Client)
     client: Client;
 

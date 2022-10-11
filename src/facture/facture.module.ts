@@ -5,7 +5,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Facture, FactureSchema } from './entities/facture.entity';
 
 @Module({
-  imports: [MongooseModule.forFeature([{name: Facture.name, schema: FactureSchema}])],
+  imports: [MongooseModule.forFeatureAsync([{name: Facture.name, useFactory: () => {
+    const schema = FactureSchema;
+    schema.plugin(require('mongoose-autopopulate'));
+    return schema;
+  }}])],
   controllers: [FactureController],
   providers: [FactureService]
 })
