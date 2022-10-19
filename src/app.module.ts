@@ -14,6 +14,7 @@ import { ClientModule } from './client/client.module';
 import { ProduitsModule } from './produits/produits.module';
 import { VentesModule } from './ventes/ventes.module';
 import { FactureModule } from './facture/facture.module';
+import { UniteModule } from './unite/unite.module';
 
 @Module({
   imports: [
