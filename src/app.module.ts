@@ -44,6 +44,7 @@ import { UniteModule } from './unite/unite.module';
     ProduitsModule,
     VentesModule,
     FactureModule,
+    UniteModule,
   ],
   controllers: [],
   providers: [],

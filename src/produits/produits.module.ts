@@ -6,8 +6,12 @@ import { Produit, ProduitSchema } from './entities/produit.entity';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-    { name: Produit.name, schema: ProduitSchema },
+    MongooseModule.forFeatureAsync([
+    { name: Produit.name, useFactory: () => {
+      const schema = ProduitSchema;
+      schema.plugin(require('mongoose-autopopulate'));
+      return schema;
+    } },
   ]),],
   controllers: [ProduitsController],
   providers: [ProduitsService]
