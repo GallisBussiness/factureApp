@@ -36,6 +36,14 @@ export class FactureService {
     }
   }
 
+  async byDate(dat: string): Promise<Facture[]> {
+    try {
+      return await this.factureModel.find({date: {$eq: dat}});
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
+  }
+
   async update(id: string, updateFactureDto: UpdateFactureDto): Promise<Facture> {
     try {
       return await this.factureModel.findByIdAndUpdate(id, updateFactureDto);

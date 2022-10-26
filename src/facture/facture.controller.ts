@@ -12,6 +12,11 @@ export class FactureController {
     return this.factureService.create(createFactureDto);
   }
 
+  @Post('bydate')
+  byDate(@Body() byDateDto: {date: string}) {
+    return this.factureService.byDate(byDateDto.date);
+  }
+
   @Get()
   findAll() {
     return this.factureService.findAll();
