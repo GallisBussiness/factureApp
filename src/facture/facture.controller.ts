@@ -22,6 +22,11 @@ export class FactureController {
     return this.factureService.findAll();
   }
 
+  @Get('byclient/:id')
+  findAllByClient(@Param('id') id: string) {
+    return this.factureService.findAllByClient(id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.factureService.findOne(id);

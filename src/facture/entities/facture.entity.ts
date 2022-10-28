@@ -15,6 +15,12 @@ export class Facture {
     @Prop({type: Number, required: true})
     total:number;
 
+    @Prop({type: Number, required: true,default: 0})
+    avance:number;
+
+    @Prop({type: Number, required: true,default: 0})
+    restant:number;
+
     @Prop({type: Types.ObjectId, ref: Client.name, required: true, autopopulate: true})
     @Type(() => Client)
     client: Client;

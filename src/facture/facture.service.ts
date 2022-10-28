@@ -28,6 +28,14 @@ export class FactureService {
     }
   }
 
+  async findAllByClient(id: string): Promise<Facture[]> {
+    try {
+      return await this.factureModel.find({client: id});
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
+  }
+
   async findOne(id: string): Promise<Facture> {
     try {
       return await this.factureModel.findById(id);
@@ -48,6 +56,7 @@ export class FactureService {
     try {
       return await this.factureModel.findByIdAndUpdate(id, updateFactureDto);
     } catch (error) {
+      console.log(error)
       throw new HttpException(error.message, 500);
     }
   }

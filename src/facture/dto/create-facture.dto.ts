@@ -1,4 +1,4 @@
-import { IsArray, IsMongoId, IsNumber, IsString } from "class-validator";
+import { IsArray, IsMongoId, IsNumber, IsOptional, IsString } from "class-validator";
 import { Vente } from "src/ventes/entities/vente.entity";
 
 export class CreateFactureDto {
@@ -13,4 +13,12 @@ export class CreateFactureDto {
 
  @IsNumber()
  total: number;
+
+ @IsOptional()
+ @IsNumber()
+ avance: number;
+
+ @IsOptional()
+ @IsNumber()
+ restant: number;
 }
