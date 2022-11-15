@@ -12,10 +12,11 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { AuthMiddleware } from './auth/auth.middleware';
 import { ClientModule } from './client/client.module';
 import { ProduitsModule } from './produits/produits.module';
-import { VentesModule } from './ventes/ventes.module';
 import { FactureModule } from './facture/facture.module';
 import { UniteModule } from './unite/unite.module';
-
+import { VenteDetailModule } from './vente-detail/vente-detail.module';
+import { FactureAchatModule } from './facture-achat/facture-achat.module';
+import { FournisseurModule } from './fournisseur/fournisseur.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -42,9 +43,11 @@ import { UniteModule } from './unite/unite.module';
     UserModule,
     ClientModule,
     ProduitsModule,
-    VentesModule,
     FactureModule,
     UniteModule,
+    VenteDetailModule,
+    FactureAchatModule,
+    FournisseurModule
   ],
   controllers: [],
   providers: [],

@@ -22,7 +22,7 @@ export class FactureService {
 
   async findAll(): Promise<Facture[]> {
     try {
-      return await this.factureModel.find();
+      return await this.factureModel.find().sort({date: 'desc'});
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
