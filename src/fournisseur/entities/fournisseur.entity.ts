@@ -2,6 +2,8 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
 export type FournisseurDocument = Fournisseur & Document;
+
+@Schema({timestamps: true})
 export class Fournisseur {
     @Prop({ type: String, required: true })
     prenom: string;

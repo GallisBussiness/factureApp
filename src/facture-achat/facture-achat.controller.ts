@@ -17,18 +17,24 @@ export class FactureAchatController {
     return this.factureAchatService.findAll();
   }
 
+  @Get('byfournisseur/:id')
+  findAllByFournisseur(@Param('id') id: string) {
+    return this.factureAchatService.findAllByFournisseur(id);
+  }
+
+
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.factureAchatService.findOne(+id);
+    return this.factureAchatService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateFactureAchatDto: UpdateFactureAchatDto) {
-    return this.factureAchatService.update(+id, updateFactureAchatDto);
+    return this.factureAchatService.update(id, updateFactureAchatDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.factureAchatService.remove(+id);
+    return this.factureAchatService.remove(id);
   }
 }

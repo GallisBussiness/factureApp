@@ -1,26 +1,70 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateFactureAchatDto } from './dto/create-facture-achat.dto';
 import { UpdateFactureAchatDto } from './dto/update-facture-achat.dto';
-
+import { FactureAchat, FactureAchatDocument } from './entities/facture-achat.entity';
 @Injectable()
 export class FactureAchatService {
-  create(createFactureAchatDto: CreateFactureAchatDto) {
-    return 'This action adds a new factureAchat';
+  constructor(
+    @InjectModel(FactureAchat.name) private FactureAchatModel: Model<FactureAchatDocument>,
+  ) {}
+
+  async create(createFactureAchatDto: CreateFactureAchatDto): Promise<FactureAchat> {
+    try {
+      const createdFactureAchat = new this.FactureAchatModel(createFactureAchatDto);
+      return await createdFactureAchat.save();
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
   }
 
-  findAll() {
-    return `This action returns all factureAchat`;
+  async findAll(): Promise<FactureAchat[]> {
+    try {
+      return await this.FactureAchatModel.find().sort({date: 'desc'});
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} factureAchat`;
+  async findAllByFournisseur(id: string): Promise<FactureAchat[]> {
+    try {
+      return await this.FactureAchatModel.find({fournisseur: id});
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
   }
 
-  update(id: number, updateFactureAchatDto: UpdateFactureAchatDto) {
-    return `This action updates a #${id} factureAchat`;
+  async findOne(id: string): Promise<FactureAchat> {
+    try {
+      return await this.FactureAchatModel.findById(id);
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} factureAchat`;
+  async byDate(dat: string): Promise<FactureAchat[]> {
+    try {
+      return await this.FactureAchatModel.find({date: {$eq: dat}});
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
+  }
+
+  async update(id: string, updateFactureAchatDto: UpdateFactureAchatDto): Promise<FactureAchat> {
+    try {
+      return await this.FactureAchatModel.findByIdAndUpdate(id, updateFactureAchatDto);
+    } catch (error) {
+      console.log(error)
+      throw new HttpException(error.message, 500);
+    }
+  }
+
+  async remove(id: string): Promise<FactureAchat> {
+    try {
+      return await this.FactureAchatModel.findByIdAndDelete(id);
+    } catch (error) {
+      throw new HttpException(error.message, 500);
+    }
   }
 }

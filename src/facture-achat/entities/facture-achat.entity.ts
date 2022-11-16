@@ -1,9 +1,11 @@
-import { Prop } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Type } from "class-transformer";
-import { Types } from "mongoose";
-import { Achat, AchatSchema } from "src/achat/entities/achat.entity";
+import { Document, Types } from "mongoose";
 import { Fournisseur } from "src/fournisseur/entities/fournisseur.entity";
 
+export type FactureAchatDocument = FactureAchat & Document;
+
+@Schema({timestamps: true})
 export class FactureAchat {
     @Prop({type: String, required: true})
     date:string;
@@ -19,9 +21,8 @@ export class FactureAchat {
 
     @Prop({type: Types.ObjectId, ref: Fournisseur.name, required: true, autopopulate: true})
     @Type(() => Fournisseur)
-    Fournisseur: Fournisseur;
-
-    @Prop({type: [{type: AchatSchema}], required: true})
-    @Type(() => Achat)
-    achats: Achat[];
+    fournisseur: Fournisseur;
 }
+
+
+export const FactureAchatSchema = SchemaFactory.createForClass(FactureAchat);
