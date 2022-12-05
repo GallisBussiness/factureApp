@@ -17,6 +17,7 @@ import { UniteModule } from './unite/unite.module';
 import { VenteDetailModule } from './vente-detail/vente-detail.module';
 import { FactureAchatModule } from './facture-achat/facture-achat.module';
 import { FournisseurModule } from './fournisseur/fournisseur.module';
+import { FactureVenteModule } from './facture-vente/facture-vente.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -47,7 +48,8 @@ import { FournisseurModule } from './fournisseur/fournisseur.module';
     UniteModule,
     VenteDetailModule,
     FactureAchatModule,
-    FournisseurModule
+    FournisseurModule,
+    FactureVenteModule
   ],
   controllers: [],
   providers: [],

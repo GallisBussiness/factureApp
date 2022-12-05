@@ -29,7 +29,7 @@ export class FactureAchatService {
 
   async findAllByFournisseur(id: string): Promise<FactureAchat[]> {
     try {
-      return await this.FactureAchatModel.find({fournisseur: id});
+      return await this.FactureAchatModel.find({fournisseur: id}).sort({date: 'desc'});
     } catch (error) {
       throw new HttpException(error.message, 500);
     }
