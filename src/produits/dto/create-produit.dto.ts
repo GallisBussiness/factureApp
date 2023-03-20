@@ -1,5 +1,4 @@
-import { IsMongoId, IsNumber, IsString } from "class-validator";
-import { Unite } from "src/unite/entities/unite.entity";
+import { IsMongoId, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateProduitDto {
     @IsString()
@@ -10,6 +9,10 @@ export class CreateProduitDto {
 
     @IsNumber()
     pa: number;
+
+    @IsOptional()
+    @IsNumber()
+    qteStock: number;
 
     @IsNumber()
     pv:  number;

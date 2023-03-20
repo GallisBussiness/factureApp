@@ -18,6 +18,7 @@ import { VenteDetailModule } from './vente-detail/vente-detail.module';
 import { FactureAchatModule } from './facture-achat/facture-achat.module';
 import { FournisseurModule } from './fournisseur/fournisseur.module';
 import { FactureVenteModule } from './facture-vente/facture-vente.module';
+import { StockModule } from './stock/stock.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -49,7 +50,8 @@ import { FactureVenteModule } from './facture-vente/facture-vente.module';
     VenteDetailModule,
     FactureAchatModule,
     FournisseurModule,
-    FactureVenteModule
+    FactureVenteModule,
+    StockModule
   ],
   controllers: [],
   providers: [],

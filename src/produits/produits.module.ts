@@ -14,6 +14,7 @@ import { Produit, ProduitSchema } from './entities/produit.entity';
     } },
   ]),],
   controllers: [ProduitsController],
-  providers: [ProduitsService]
+  providers: [ProduitsService],
+  exports: [ProduitsService]
 })
 export class ProduitsModule {}
