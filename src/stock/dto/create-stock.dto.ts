@@ -9,6 +9,9 @@ export class CreateStockDto {
     @IsMongoId()
     produit: string;
 
+    @IsMongoId()
+    depot: string;
+
     @IsNumber()
     qte: number;
 }
